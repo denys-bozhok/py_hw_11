@@ -17,3 +17,16 @@ def get_sorted_list(films: list):
     result = swap(films, film_i, film_el)
 
     return result
+
+
+def shaw_choose_of_type_sorted(arr):
+    i = 0
+
+    for el in arr:
+        for key, value in el.items():
+
+            if key == "title":
+                print(f"{i + 1}) {value.upper()}")
+                i += 1
+            if key == "rating":
+                print(f"{key} : {value}")

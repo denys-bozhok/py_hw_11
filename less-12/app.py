@@ -48,50 +48,40 @@ def main():
             case 3:
                 get_sorted_arr.get_sorted_list(films)
 
-                i = 0
+                shaw_films = True
 
-                for el in menu_list[3]:
-                    print(f"{i + 1}) {el}".upper())
-                    i += 1
-
-                choose_type_of_sorted = int(input("\nEnter number of sorted type :\n"))
-
-                # ТУТ ОСТАЛОСЬ В ФУНКЦИИ ПЕРЕДЕЛАТЬ И НАКИНУТЬ ПРОВЕРКУ, А ТАКЖЕ ОБЕРНУТЬ ВСЕ В ЦИКЛ.
-                # если успею на работе, то сделаю
-
-                if choose_type_of_sorted == 1:
+                while shaw_films:
                     i = 0
 
-                    upper_list = get_sorted_arr.get_sorted_list(films)
+                    for el in menu_list[3]:
+                        print(f"{i + 1}) {el}".upper())
+                        i += 1
 
-                    for el in upper_list:
-                        for key, value in el.items():
+                    try:
+                        choose_type_of_sorted = int(input("\nEnter number of sorted type :\n"))
+                    except:
+                        print(incorrect_data)
 
-                            if key == "title":
-                                print(f"{i + 1}) {value.upper()}")
-                                i += 1
-                            if key == "rating":
-                                print(f"{key} : {value}")
+                        continue
 
-                    is_running = False
+                    if choose_type_of_sorted == 1:
+                        upper_list = get_sorted_arr.get_sorted_list(films)
 
-                elif choose_type_of_sorted == 2:
-                    i = 0
-                    lower_list = reversed(get_sorted_arr.get_sorted_list(films))
+                        get_sorted_arr.shaw_choose_of_type_sorted(upper_list)
 
-                    for el in lower_list:
-                        for key, value in el.items():
+                        is_running = False
+                        shaw_films = False
 
-                            if key == "title":
-                                print(f"{i + 1}) {value.upper()}")
-                                i += 1
-                            if key == "rating":
-                                print(f"{key} : {value}")
+                    elif choose_type_of_sorted == 2:
+                        lower_list = reversed(get_sorted_arr.get_sorted_list(films))
 
-                    is_running = False
+                        get_sorted_arr.shaw_choose_of_type_sorted(lower_list)
 
-                else:
-                    print(f"{incorrect_data}")
+                        is_running = False
+                        shaw_films = False
+
+                    else:
+                        print(f"{incorrect_data}")
 
             case 4:
                 print("Goodbye!".upper())
